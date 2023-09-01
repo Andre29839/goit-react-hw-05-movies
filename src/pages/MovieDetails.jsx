@@ -17,7 +17,7 @@ const MovieDetails = () => {
   const { moveId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const backLinkHref = useRef(location.state?.from || '/');
+  const backLinkHref = useRef(location.state?.form || '/');
 
   useEffect(() => {
     const movieDetails = async () => {
@@ -39,10 +39,21 @@ const MovieDetails = () => {
     ({ id, logo_path, name }) =>
       logo_path && (
         <li key={id}>
-          {logo_path && (
+          {logo_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w500${logo_path}`}
               alt={name}
+              style={{
+                maxHeight: 50,
+                maxWidth: 200,
+                marginRight: 30,
+                marginTop: 10,
+              }}
+            />
+          ) : (
+            <img
+              src="../components/images/default_logo.jpg"
+              alt="default logo"
               style={{
                 maxHeight: 50,
                 maxWidth: 200,

@@ -22,8 +22,11 @@ export const Form = styled.form`
 export const Icon = styled(FcSearch)`
   width: 25px;
   height: 25px;
-  position: relative;
-  right: 56px;
   z-index: 1;
   opacity: 0.7;
+`;
+
+export const Button = styled.button`
+  background: transparent;
+  border: none;
 `;

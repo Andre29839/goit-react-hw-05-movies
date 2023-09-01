@@ -14,11 +14,13 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
 
   const updateQueryString = query => {
-    const nextParams = query !== '' && { query };
-    setSearchParams(nextParams);
+    setSearchParams({ query });
   };
 
   useEffect(() => {
+    if (!movieName) {
+      return;
+    }
     const search = async () => {
       try {
         setLoading(true);
@@ -36,7 +38,7 @@ const Movies = () => {
   return (
     <div>
       <SkeletonTheme baseColor="#dddddd" highlightColor="#a5a5a5">
-        <SearchForm value={movieName} onChange={updateQueryString} />
+        <SearchForm value={movieName} onSubmit={updateQueryString} />
         {loading ? (
           <Skeleton
             count={15}
