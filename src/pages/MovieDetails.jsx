@@ -12,6 +12,7 @@ import {
 import noimage from 'components/images/noimage.svg';
 import Button from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
+import defaultImg from '../components/images/default_logo.jpg';
 
 const MovieDetails = () => {
   const { moveId } = useParams();
@@ -39,29 +40,20 @@ const MovieDetails = () => {
     ({ id, logo_path, name }) =>
       logo_path && (
         <li key={id}>
-          {logo_path ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${logo_path}`}
-              alt={name}
-              style={{
-                maxHeight: 50,
-                maxWidth: 200,
-                marginRight: 30,
-                marginTop: 10,
-              }}
-            />
-          ) : (
-            <img
-              src="../components/images/default_logo.jpg"
-              alt="default logo"
-              style={{
-                maxHeight: 50,
-                maxWidth: 200,
-                marginRight: 30,
-                marginTop: 10,
-              }}
-            />
-          )}
+          <img
+            src={
+              logo_path
+                ? `https://image.tmdb.org/t/p/w500${logo_path}`
+                : defaultImg
+            }
+            alt={name || 'default logo'}
+            style={{
+              maxHeight: 50,
+              maxWidth: 200,
+              marginRight: 30,
+              marginTop: 10,
+            }}
+          />
         </li>
       )
   );
